@@ -1,0 +1,34 @@
+{
+  "name": "node-basex",
+  "description": "A BaseX REST Client for Node.js",
+  "version": "0.0.1",
+  "main": "./lib/basex.js",
+  "license": "MIT",
+  "author": {
+    "name": "Brendan Goodenough",
+    "email": "brendan@goodenough.nz",
+    "url": "https://www.goodenough.nz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nerdenough/node-basex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nerdenough/node-basex/issues"
+  },
+  "homepage": "https://github.com/nerdenough/node-basex#readme",
+  "keywords": [
+    "node",
+    "basex",
+    "rest",
+    "xml"
+  ],
+  "scripts": {
+    "test": "gulp test"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0"
+  }
+}
