@@ -41,7 +41,7 @@ describe('Client', function () {
   });
 
   describe('#buildQuery', function () {
-    it('should build a query with basex xmlns', function () {
+    it('should build a query with basex rest xmlns', function () {
       var client = new basex.Client({});
       var query = client.buildQuery({});
       var answer = new xmler.Element('query');
@@ -53,7 +53,7 @@ describe('Client', function () {
       expect(query).to.equal(answer.getXML());
     });
 
-    it('should build a query with a text field', function () {
+    it('should build a query with text', function () {
       var client = new basex.Client({});
       var query = client.buildQuery({
         text: 'xquery'
@@ -63,6 +63,24 @@ describe('Client', function () {
       var text = new xmler.Element('text', 'xquery');
 
       answer.addElement(text);
+      answer.addAttribute({
+        key: 'xmlns',
+        value: 'http://basex.org/rest'
+      });
+
+      expect(query).to.equal(answer.getXML());
+    });
+
+    it('should build a query with context', function () {
+      var client = new basex.Client({});
+      var query = client.buildQuery({
+        context: 'some context'
+      });
+
+      var answer = new xmler.Element('query');
+      var context = new xmler.Element('context', 'some context');
+
+      answer.addElement(context);
       answer.addAttribute({
         key: 'xmlns',
         value: 'http://basex.org/rest'
@@ -88,6 +106,56 @@ describe('Client', function () {
 
       answer.addElement(param1);
       answer.addElement(param2);
+      answer.addAttribute({
+        key: 'xmlns',
+        value: 'http://basex.org/rest'
+      });
+
+      expect(query).to.equal(answer.getXML());
+    });
+
+    it('should build a query with options', function () {
+      var client = new basex.Client({});
+      var query = client.buildQuery({
+        options: [
+          {key: 'id', value: 1},
+          {key: 'id', value: 2}
+        ]
+      });
+
+      var answer = new xmler.Element('query');
+      var option1 = new xmler.Element('option');
+      var option2 = new xmler.Element('option');
+      option1.addAttribute({key: 'id', value: 1});
+      option2.addAttribute({key: 'id', value: 2});
+
+      answer.addElement(option1);
+      answer.addElement(option2);
+      answer.addAttribute({
+        key: 'xmlns',
+        value: 'http://basex.org/rest'
+      });
+
+      expect(query).to.equal(answer.getXML());
+    });
+
+    it('should build a query with variables', function () {
+      var client = new basex.Client({});
+      var query = client.buildQuery({
+        variables: [
+          {key: 'id', value: 1},
+          {key: 'id', value: 2}
+        ]
+      });
+
+      var answer = new xmler.Element('query');
+      var variable1 = new xmler.Element('variable');
+      var variable2 = new xmler.Element('variable');
+      variable1.addAttribute({key: 'id', value: 1});
+      variable2.addAttribute({key: 'id', value: 2});
+
+      answer.addElement(variable1);
+      answer.addElement(variable2);
       answer.addAttribute({
         key: 'xmlns',
         value: 'http://basex.org/rest'
