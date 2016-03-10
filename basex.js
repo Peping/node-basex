@@ -88,8 +88,8 @@ Client.prototype.buildQueryChildren = function (args) {
   if (args.parameters) {
     args.parameters.forEach(function (item) {
       var element = new xmler.Element('parameter');
-      element.setAttributes(item.attr);
-      parameters.push(element);
+      element.addAttributes(item);
+      children.push(element);
     });
   }
 
@@ -97,8 +97,8 @@ Client.prototype.buildQueryChildren = function (args) {
   if (args.options) {
     args.options.forEach(function (item) {
       var element = new xmler.Element('option');
-      element.setAttributes(item.attr);
-      options.push(element);
+      element.addAttributes(item);
+      children.push(element);
     });
   }
 
@@ -106,8 +106,8 @@ Client.prototype.buildQueryChildren = function (args) {
   if (args.variables) {
     args.variables.forEach(function (item) {
       var element = new xmler.Element('variable');
-      element.setAttributes(item.attr);
-      variables.push(element);
+      element.addAttributes(item);
+      children.push(element);
     });
   }
 
