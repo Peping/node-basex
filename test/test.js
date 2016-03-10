@@ -1,5 +1,6 @@
-var basex = require('../lib/basex');
 var chai = require('chai');
+var basex = require('../basex');
+
 var expect = chai.expect;
 
 describe('Client', function () {

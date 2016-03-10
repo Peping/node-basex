@@ -2,7 +2,7 @@
   "name": "node-basex",
   "description": "A BaseX REST Client for Node.js",
   "version": "0.0.1",
-  "main": "./lib/basex.js",
+  "main": "./basex.js",
   "license": "MIT",
   "author": {
     "name": "Brendan Goodenough",
