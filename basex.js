@@ -75,6 +75,9 @@ Client.prototype.buildQuery = function (args) {
 
 // Builds the child elements for the query based on the args provided. Returns
 // and array of child elements.
+//
+// See: http://docs.basex.org/wiki/REST#POST_Method
+// See: http://docs.basex.org/wiki/REST:_POST_Schema
 Client.prototype.buildQueryChildren = function (args) {
   var children = [];
 

@@ -8,3 +8,7 @@ gulp.task('test', function () {
     })
     .pipe(mocha());
 });
+
+gulp.task('test:watch', function () {
+  gulp.watch('basex.js', ['test']);
+});
