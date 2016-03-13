@@ -87,15 +87,6 @@ Client.prototype.buildQueryChildren = function (args) {
     children.push(text);
   }
 
-  // Parameters
-  if (args.parameters) {
-    args.parameters.forEach(function (item) {
-      var element = new xmler.Element('parameter');
-      element.addAttributes(item);
-      children.push(element);
-    });
-  }
-
   // Options
   if (args.options) {
     args.options.forEach(function (item) {

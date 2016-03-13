@@ -89,31 +89,6 @@ describe('Client', function () {
       expect(query).to.equal(answer.getXML());
     });
 
-    it('should build a query with parameters', function () {
-      var client = new basex.Client({});
-      var query = client.buildQuery({
-        parameters: [
-          {key: 'id', value: 1},
-          {key: 'id', value: 2}
-        ]
-      });
-
-      var answer = new xmler.Element('query');
-      var param1 = new xmler.Element('parameter');
-      var param2 = new xmler.Element('parameter');
-      param1.addAttribute({key: 'id', value: 1});
-      param2.addAttribute({key: 'id', value: 2});
-
-      answer.addElement(param1);
-      answer.addElement(param2);
-      answer.addAttribute({
-        key: 'xmlns',
-        value: 'http://basex.org/rest'
-      });
-
-      expect(query).to.equal(answer.getXML());
-    });
-
     it('should build a query with options', function () {
       var client = new basex.Client({});
       var query = client.buildQuery({
