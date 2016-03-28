@@ -139,4 +139,23 @@ describe('Client', function () {
       expect(query).to.equal(answer.getXML());
     });
   });
+
+  describe('#buildCommand', function () {
+    it('should build a command with text', function () {
+      var client = new basex.Client({});
+      var command = client.buildCommand({
+        text: 'LIST database'
+      });
+
+      var answer = new xmler.Element('command');
+      var text = new xmler.Element('text', 'LIST database');
+      answer.addElement(text);
+      answer.addAttribute({
+        key: 'xmlns',
+        value: 'http://basex.org/rest'
+      });
+
+      expect(command).to.equal(answer.getXML());
+    });
+  });
 });

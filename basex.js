@@ -23,12 +23,36 @@ var Client = function (options) {
   this.encoded = new Buffer(auth).toString('base64');
 };
 
+Client.prototype.command = function (args, callback) {
+  var cmd = this.buildCommand(args);
+  this.execute(cmd, callback);
+};
+
+Client.prototype.buildCommand = function (args) {
+  var command = new xmler.Element('command');
+  var text = new xmler.Element('text', args.text);
+
+  command.addAttribute({
+    key: 'xmlns',
+    value: 'http://basex.org/rest'
+  });
+
+  command.addElement(text);
+
+  return command.getXML();
+};
+
 // Queries the BaseX database and sends any response data to the specified
 // callback. The args object will be used to build the query through the
 // buildQuery function.
 Client.prototype.query = function (args, callback) {
   var query = this.buildQuery(args);
+  this.execute(query, callback);
+};
 
+// Executes a call to the BaseX REST API and sends any data received to the
+// callback.
+Client.prototype.execute = function (query, callback) {
   var options = {
     host: this.options.host,
     port: this.options.port,
@@ -36,7 +60,7 @@ Client.prototype.query = function (args, callback) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/xml',
-      'Content-Length': query.length,
+      'Content-Length': data.length,
       'Authorization': 'Basic ' + this.encoded
     }
   };
