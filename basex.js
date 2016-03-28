@@ -60,7 +60,7 @@ Client.prototype.execute = function (query, callback) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/xml',
-      'Content-Length': data.length,
+      'Content-Length': query.length,
       'Authorization': 'Basic ' + this.encoded
     }
   };
