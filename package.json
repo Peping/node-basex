@@ -1,7 +1,7 @@
 {
   "name": "node-basex",
   "description": "A BaseX REST Client for Node.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./basex.js",
   "license": "MIT",
   "author": {
