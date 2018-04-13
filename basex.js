@@ -115,7 +115,7 @@ Client.prototype.buildQueryChildren = function (args) {
   if (args.options) {
     args.options.forEach(function (item) {
       var element = new xmler.Element('option');
-      element.addAttributes(item);
+      element.addAttributes([{key:'name', value:item.key}, {key:'value', value:item.value}]);
       children.push(element);
     });
   }
@@ -124,7 +124,7 @@ Client.prototype.buildQueryChildren = function (args) {
   if (args.variables) {
     args.variables.forEach(function (item) {
       var element = new xmler.Element('variable');
-      element.addAttributes(item);
+      element.addAttributes([{key:'name', value:item.key}, {key:'value', value:item.value}]);
       children.push(element);
     });
   }
